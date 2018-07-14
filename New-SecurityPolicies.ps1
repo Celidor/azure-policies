@@ -20,8 +20,7 @@ Function New-AllowedLocationsPolicy{
         New-AzureRMPolicyAssignment -Name $policyName `
           -Scope "/subscriptions/$subscription" `
           -PolicyDefinition $definition `
-          -listofAllowedLocations [,northeurope,uksouth,ukwest,westeurope,] `
-          -Sku @{Name='A1';Tier='Standard'}
+          -listofAllowedLocations [,northeurope,uksouth,ukwest,westeurope,]
 
         $policyAssignment = Get-AzureRmPolicyAssignment -Name $policyName -scope "/subscriptions/$subscription"
         Write-Output $policyAssignment
@@ -72,8 +71,7 @@ Function New-ResourceTypesPolicy{
         New-AzureRMPolicyAssignment -Name $policyName `
           -Scope "/subscriptions/$subscription" `
           -PolicyDefinition $definition `
-          -listofResourceTypesNotAllowed $listofResourceTypesNotAllowed `
-          -Sku @{Name='A1';Tier='Standard'}
+          -listofResourceTypesNotAllowed $listofResourceTypesNotAllowed
 
           $policyAssignment = Get-AzureRmPolicyAssignment -Name $policyName -scope "/subscriptions/$subscription"
 
